@@ -1,32 +1,9 @@
-#include <boost/config.hpp>
 #include <iostream>
 #include <vector>
-#include <boost/graph/random.hpp>
-#include <boost/random/mersenne_twister.hpp>
-#include <algorithm>
-#include <boost/pending/fibonacci_heap.hpp>
-#include <boost/graph/graph_utility.hpp>
-#include <boost/pending/indirect_cmp.hpp>
+#include "./FibonacciHeapHandler.cpp"
+#include "./JsonHandler.cpp"
 
 using namespace std;
-using namespace boost;
-
-vector<string> heapsort(vector<string> in) 
-{
-    vector<string> out;
-    int i;
-    const int N = in.size();
-    typedef indirect_cmp<string*,less<string>> ICmp;
-    ICmp cmp(&in[0], less<string>());
-    fibonacci_heap<int, ICmp> Q(N, cmp);
-    for (i = 0; i < N; ++i) 
-        Q.push(i);
-    for (i = 0; i < N; ++i) {
-        out.push_back(in[Q.top()]);
-        Q.pop();
-    }
-    return out;
-}
 
 int main()
 {
@@ -40,11 +17,15 @@ int main()
         w.push_back(in);
     }
     
-    w = heapsort(w);
+    FibonacciHeapHandler fib;
+    fib.heapsort(&w);
     
     for (int i = 0; i < w.size(); ++i) 
         cout << w[i] << "; ";
     cout << endl;
+    
+    JsonHandler json;
+    json.example();
     
     cin >> in;
     return 0;
