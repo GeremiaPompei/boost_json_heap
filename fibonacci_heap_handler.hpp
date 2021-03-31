@@ -6,7 +6,26 @@
 using namespace std;
 using namespace boost::heap;
 
+/**
+ * Classe utile a fornire oggetti capaci di gestire un parametro di tipo T in un heap di fibonacci.
+ */
+template<typename T> 
 class FibonacciHeapHandler {
     public:
-        void heapsort(vector<Value> *toSort);
+        /**
+         * Algoritmo capace di riordinare un vettore.
+         */
+        void heapsort(vector<T> *toSort) {
+            int i;
+            const int N = toSort->size();
+            fibonacci_heap<T, compare<T>> Q;
+            for (i = 0; i < N; ++i) {
+                Q.push((*toSort)[i]);
+            }
+            toSort->clear();
+            for (i = 0; i < N; ++i) {
+                toSort->push_back(Q.top());
+                Q.pop();
+            }
+        }
 };

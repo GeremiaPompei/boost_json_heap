@@ -1,5 +1,8 @@
 #include "json_handler.hpp"
 
+/**
+ * Deserializzatore da stringa json ad oggetto Value.
+ */
 Value JsonHandler::parser(string toParse)
 {
     ptree pt;
@@ -10,6 +13,9 @@ Value JsonHandler::parser(string toParse)
     return Value(id, name);
 }
 
+/**
+ * Serializzatore da oggetto Value a stringa json.
+ */
 string JsonHandler::stringify(Value toStringify)
 {
     ptree pt;
