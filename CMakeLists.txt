@@ -12,6 +12,6 @@ find_package(Boost 1.45.0 COMPONENTS)
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS}) 
-    add_executable(${PROJECT_NAME} main.cpp)
+    add_executable(${PROJECT_NAME} main.cpp value.cpp fibonacci_heap_handler.cpp json_handler.cpp)
     target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 endif()
