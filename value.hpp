@@ -2,13 +2,14 @@
 #define VALUE_H
 
 #include <iostream>
+#include "comparator.hpp"
 
 using namespace std;
 
 /**
  * Classe utile a costruire oggetti composti da un id e un nome.
  */
-class Value {
+class Value : public Comparator {
     private :
         /**
          * Id del Value.

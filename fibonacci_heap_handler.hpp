@@ -15,10 +15,11 @@ class FibonacciHeapHandler {
         /**
          * Algoritmo capace di riordinare un vettore.
          */
+        template<typename C, typename = std::enable_if<std::is_base_of<Comparator, C>::value>>
         void heapsort(vector<T> *toSort) {
             int i;
             const int N = toSort->size();
-            fibonacci_heap<T, compare<T>> Q;
+            fibonacci_heap<T, compare<C>> Q;
             for (i = 0; i < N; ++i) {
                 Q.push((*toSort)[i]);
             }

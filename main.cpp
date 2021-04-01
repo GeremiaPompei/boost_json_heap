@@ -25,7 +25,7 @@ int main()
         try {
             Value v = json.parser(s);
             w.push_back(v);
-            fib.heapsort(&w);
+            fib.heapsort<Value>(&w);
             for (int i = 0; i < w.size(); ++i) 
                 cout << json.stringify(w[i]);
             cout << endl;
